@@ -9,7 +9,6 @@ user_body = {
 }
 
 kit_body = {
-    "id": 1,
     "name" : "coffe"
 }
 

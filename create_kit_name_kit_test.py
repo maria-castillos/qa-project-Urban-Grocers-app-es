@@ -1,7 +1,5 @@
 import sender_stand_request
 import data
-from data import kit_body_prueba_1, kit_body, kit_body_prueba_9
-
 
 # Función para cambiar el valor del parámetro name en el cuerpo de la solicitud
 def get_kit_body(name):
@@ -17,12 +15,12 @@ def positive_assert(name):
     # El cuerpo de la solicitud actualizada se guarda en la variable kit_body
     kit_body = get_kit_body(name)
     # El resultado de la solicitud para crear un nuevo kit se guarda en la variable response
-    kit_response = sender_stand_request.post_create_new_kit(kit_body)
+    kit_response = sender_stand_request.post_new_client_kit(kit_body)
 
     # Comprueba si el código de estado es 201
     assert kit_response.status_code == 201
     # Comprueba que el campo name está en la respuesta y contiene un valor
-    assert kit_response.json()["name"] != name
+    assert kit_response.json()["name"] == name  #CORRECCION SE TENIA ANTERIORMENTE QUE ["name] =! name
 
 # Función de prueba negativa para los casos en los que la solicitud devuelve un error relacionado con caracteres
 def negative_assert_code_400(name):
@@ -30,7 +28,7 @@ def negative_assert_code_400(name):
     kit_body = get_kit_body(name)
 
     # El resultado se guarda en la variable response
-    response = sender_stand_request.post_create_new_kit(kit_body)
+    response = sender_stand_request.post_new_client_kit(kit_body, auth_token)
 
     # Comprueba si el código de estado es 400
     assert response.status_code == 400
