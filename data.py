@@ -40,6 +40,8 @@ kit_body_prueba_7 = {
     "name" : "123"
 }
 
+kit_body_prueba_8 = { }
+
 kit_body_prueba_9 = {
     "name": 123
 }
